@@ -17,5 +17,5 @@
     "decode",
     "4444"
   ],
-  "explanation": "Word starting hidden, encoded PowerShell is the classic macro-based initial access pattern, and the outbound connection on 4444 confirms command and control. Isolate WS02, decode the payload, find the document and other recipients, check persistence and credentials."
+  "explanation": "Word as the parent of hidden, encoded PowerShell is the classic macro-based initial access pattern, and the outbound connection on 4444 confirms command and control. Isolate WS02, decode the payload, find the document and other recipients, check persistence and credentials."
 }

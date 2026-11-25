@@ -15,5 +15,5 @@
     "other hosts",
     "CDN"
   ],
-  "explanation": "A single hit is not enough. Random-looking labels also appear in CDN and tracking domains. Check how often the host queries such names, which process made the query, whether other hosts query it, domain age and reputation, and what connections followed."
+  "explanation": "A single hit is not enough. Random-looking labels (high entropy) also appear in CDN and tracking domains. Check the baseline and frequency: how often the host queries such names, which process made the query, whether other hosts query it, domain age and reputation, and what connections followed."
 }

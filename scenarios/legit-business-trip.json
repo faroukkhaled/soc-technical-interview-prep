@@ -16,5 +16,5 @@
     "tolerance",
     "VPN"
   ],
-  "explanation": "Qatar to UAE is about 380 km and the same known device was used five hours apart, so the speed is plausible. Distance, elapsed time and device all point to normal behaviour. Add a distance floor and device context to the rule so it does not fire on this."
+  "explanation": "Qatar to UAE is about 380 km and the same known device was used five hours apart, so the speed is plausible. Distance, elapsed time and device all point to normal behaviour. Add a distance floor and device context to the rule so it does not fire on this. Also allow for a tolerance window and known VPN exit countries."
 }
