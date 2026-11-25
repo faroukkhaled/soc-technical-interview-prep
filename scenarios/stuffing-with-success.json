@@ -1,0 +1,27 @@
+{
+  "id": "stuffing-with-success",
+  "title": "Failed logins then success",
+  "difficulty": "medium",
+  "logs": [
+    "08:02:10 login FAIL user=cust001 ip=185.220.101.61",
+    "08:02:16 login FAIL user=cust002 ip=185.220.101.61",
+    "08:02:22 login FAIL user=cust003 ip=185.220.101.61",
+    "08:02:28 login FAIL user=cust004 ip=185.220.101.61",
+    "08:02:34 login FAIL user=cust005 ip=185.220.101.61",
+    "08:02:40 login FAIL user=cust006 ip=185.220.101.61",
+    "08:02:46 login FAIL user=cust007 ip=185.220.101.61",
+    "08:02:52 login FAIL user=cust008 ip=185.220.101.61",
+    "08:05:01 login OK   user=cust004 ip=185.220.101.61"
+  ],
+  "question": "What happened and what do you do?",
+  "verdict": "true_positive",
+  "keywords": [
+    "credential stuffing",
+    "distinct",
+    "success",
+    "block",
+    "reset",
+    "cust004"
+  ],
+  "explanation": "Many distinct accounts failing from one IP, then a success, is credential stuffing with one hit. Block the IP, force a reset and session revocation for cust004, check what it did after login, and look for other IPs with the same pattern."
+}

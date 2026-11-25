@@ -1,0 +1,22 @@
+{
+  "id": "kerberoast-burst",
+  "title": "Many RC4 service tickets",
+  "difficulty": "medium",
+  "logs": [
+    "09:53:34 EventID=4769 DC01 Account=bob@LAB Service=svc_sql0 TicketEncryption=0x17 Client=10.0.0.21",
+    "09:53:38 EventID=4769 DC01 Account=bob@LAB Service=svc_sql1 TicketEncryption=0x17 Client=10.0.0.21",
+    "09:53:44 EventID=4769 DC01 Account=bob@LAB Service=svc_web TicketEncryption=0x17 Client=10.0.0.21",
+    "09:53:49 EventID=4769 DC01 Account=bob@LAB Service=svc_backup TicketEncryption=0x17 Client=10.0.0.21"
+  ],
+  "question": "What is this and what is the response?",
+  "verdict": "true_positive",
+  "keywords": [
+    "Kerberoasting",
+    "RC4",
+    "service account",
+    "reset",
+    "password",
+    "10.0.0.21"
+  ],
+  "explanation": "Several RC4 service ticket requests for different service accounts in seconds from one host is Kerberoasting. Investigate 10.0.0.21 and bob's account, reset the service account passwords (use long random passwords or gMSA), and move to AES."
+}

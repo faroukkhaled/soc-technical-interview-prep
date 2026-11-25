@@ -1,0 +1,19 @@
+{
+  "id": "rare-dns-needs-data",
+  "title": "Single odd DNS query",
+  "difficulty": "easy",
+  "logs": [
+    "11:20:03 dns host=WS09 query=kq3v9z1x0r7d4m2p.example-cdn.com type=A answer=93.184.216.34"
+  ],
+  "question": "One long random-looking DNS name from one host. Verdict?",
+  "verdict": "needs_more_data",
+  "keywords": [
+    "entropy",
+    "baseline",
+    "frequency",
+    "process",
+    "other hosts",
+    "CDN"
+  ],
+  "explanation": "A single hit is not enough. Random-looking labels also appear in CDN and tracking domains. Check how often the host queries such names, which process made the query, whether other hosts query it, domain age and reputation, and what connections followed."
+}

@@ -1,0 +1,19 @@
+{
+  "id": "av-lsass",
+  "title": "Defender touches LSASS",
+  "difficulty": "medium",
+  "logs": [
+    "10:02:11 EventID=10 Host=WS01 SourceImage=C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18\\MsMpEng.exe TargetImage=C:\\Windows\\System32\\lsass.exe GrantedAccess=0x1010"
+  ],
+  "question": "The LSASS access rule fired. True or false positive?",
+  "verdict": "false_positive",
+  "keywords": [
+    "MsMpEng",
+    "Defender",
+    "allow",
+    "legitimate",
+    "path",
+    "signed"
+  ],
+  "explanation": "MsMpEng.exe from the Defender platform folder is legitimate and opens LSASS. Confirm the path and signature, then add a narrow allow-list on the signed image path. Do not allow-list by name alone because attackers can copy a binary called MsMpEng.exe."
+}
