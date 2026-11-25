@@ -1,6 +1,6 @@
 # SOC Interview Trainer
 
-A study toolkit for SOC analyst interviews: a 71-question bank with model answers, a spaced-repetition quiz, timed mock interviews, log-triage drills with a true/false positive verdict, cheat sheets, and exports to Anki and a static flashcard page. Python standard library only (3.9+).
+A study toolkit for SOC analyst interviews: a 71-question bank with model answers, a spaced-repetition quiz, timed mock interviews, log-triage drills with a true/false positive verdict, cheat sheets, and exports to Anki and a static flashcard page. Python standard library only (3.10+).
 
 The answers are written in my own words for revision. The drills use synthetic logs.
 
