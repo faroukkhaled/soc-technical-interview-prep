@@ -1,0 +1,20 @@
+{
+  "id": "real-run-key-powershell",
+  "title": "Real log: Run key set by PowerShell",
+  "difficulty": "easy",
+  "source": "Real telemetry from OTRF Security-Datasets (MIT), lab-generated, not employer data",
+  "logs": [
+    "04:19:04 EventID=13 Host=WORKSTATION5 Image=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe TargetObject=HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\Updater"
+  ],
+  "question": "Is this persistence? What would you check?",
+  "verdict": "true_positive",
+  "keywords": [
+    "Run",
+    "PowerShell",
+    "value",
+    "Updater",
+    "HKLM",
+    "persistence"
+  ],
+  "explanation": "A HKLM Run key written by PowerShell and named Updater is classic persistence (T1547.001). Read the Run key value to see what starts at logon, find who ran PowerShell and when, and remove it after capturing evidence. Installers also write Run keys, so ask whether any software was being installed."
+}

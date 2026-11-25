@@ -1,0 +1,20 @@
+{
+  "id": "real-powershell-lsass",
+  "title": "Real log: PowerShell opens LSASS",
+  "difficulty": "easy",
+  "source": "Real telemetry from OTRF Security-Datasets (MIT), lab-generated, not employer data",
+  "logs": [
+    "14:32:56 EventID=10 Host=WORKSTATION5 SourceImage=C:\\windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe TargetImage=C:\\windows\\system32\\lsass.exe GrantedAccess=0x1010"
+  ],
+  "question": "An LSASS-access rule fired. True or false positive, and what next?",
+  "verdict": "true_positive",
+  "keywords": [
+    "PowerShell",
+    "0x1010",
+    "memory",
+    "credential",
+    "isolate",
+    "parent"
+  ],
+  "explanation": "PowerShell has no reason to open LSASS, and 0x1010 includes read-memory rights, which credential dumpers need. Treat it as credential dumping (T1003.001). Check the parent process and command line, isolate the host, and reset credentials of accounts that were logged on. In the source capture this was Mimikatz run through Empire."
+}

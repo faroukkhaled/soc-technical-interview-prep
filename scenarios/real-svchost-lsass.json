@@ -1,0 +1,20 @@
+{
+  "id": "real-svchost-lsass",
+  "title": "Real log: svchost opens LSASS",
+  "difficulty": "medium",
+  "source": "Real telemetry from OTRF Security-Datasets (MIT), lab-generated, not employer data",
+  "logs": [
+    "14:32:46 EventID=10 Host=WORKSTATION5 SourceImage=C:\\windows\\system32\\svchost.exe TargetImage=C:\\windows\\system32\\lsass.exe GrantedAccess=0x1000"
+  ],
+  "question": "An LSASS-access rule fired on this event. True or false positive?",
+  "verdict": "false_positive",
+  "keywords": [
+    "svchost",
+    "0x1000",
+    "baseline",
+    "legitimate",
+    "path",
+    "allow"
+  ],
+  "explanation": "svchost.exe from System32 asking LSASS for 0x1000 (limited query) access is normal background behaviour; it showed up as legitimate baseline traffic before the attack began in the same capture. Confirm the image path, then allow-list it on that access mask. Dumping tools need read-memory rights such as 0x1010 or 0x1410, so alert on the access mask and the source, not on the target alone."
+}

