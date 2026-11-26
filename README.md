@@ -39,3 +39,26 @@ Append a block to a file in `bank/`:
 A: The model answer.
 ```
 Then run the tests. They fail if the answer does not contain its keywords.
+
+## Architecture
+```mermaid
+flowchart LR
+    A["bank/*.md<br/>questions + model answers"] --> B["bank.py parse"]
+    C["scenarios/*.json<br/>log triage drills"] --> D["scenarios.py"]
+    B --> E["cli.py quiz / mock / list"]
+    D --> F["cli.py drill"]
+    E --> G["grade.py<br/>keyword coverage"]
+    F --> G
+    G --> H["srs.py<br/>Leitner boxes, ~/.soctrainer.json"]
+    B --> I["export.py<br/>Anki TSV / HTML"]
+```
+
+## Scope and limits
+**Tested**
+- 22 unit tests, including checks on the content itself (each model answer covers its own keywords, ids are unique, each scenario scores 100% on its own explanation). They run in GitHub Actions on push. I ran them locally on 26 Nov 2026: all pass.
+- The quiz code and the consistency of the question bank and drills.
+
+**Not tested**
+- whether the model answers match any real interviewer's expectations, accuracy of every technical claim by an independent reviewer, or the keyword grader on free-form answers. Five of twelve drills use public OTRF telemetry, the rest are synthetic.
+
+**Licence:** MIT, see `LICENSE`. Security reports: see `SECURITY.md`.
